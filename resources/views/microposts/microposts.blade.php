@@ -9,6 +9,18 @@
                 <div>
                     <p>{!! nl2br(e($micropost->content)) !!}</p>
                 </div>
+                
+                <div>
+                    @if (Auth::user()->is_favorites($micropost->id))
+                        {!! Form::open(['route' => ['favorites.unfavorite', $micropost->id], 'method' => 'delete']) !!}
+                            {!! Form::submit('unfavorite', ['class' => 'btn btn-secondary']) !!}
+                        {!! Form::close() !!}
+                    @else
+                        {!! Form::open(['route' => ['favorites.favorite', $micropost->id]]) !!}
+                            {!! Form::submit('favorite', ['class' => 'btn btn-primary']) !!}
+                        {!! Form::close() !!}
+                    @endif
+                </div>
                 <div>
                     @if (Auth::id() === $micropost->user_id)
                         {!! Form::open(['route' => ['microposts.destroy', $micropost->id], 'method' => 'delete']) !!}
