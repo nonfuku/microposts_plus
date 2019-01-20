@@ -23,6 +23,9 @@ class CreateMicropostsTagsTable extends Migration
             $table->foreign('micropost_id')->references('id')->on('microposts')->onDelete('cascade');
             $table->foreign('tag_id')->references('id')->on('tags')->onDelete('cascade');
 
+            //重複登録の禁止
+            $table->unique(['micropost_id', 'tag_id']);
+
         });
     }
 
