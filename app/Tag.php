@@ -13,3 +13,5 @@ class Tag extends Model
         return $this->belongsToMany(Micropost::class, 'microposts_tags', 'tag_id', 'micropost_id')->withTimestamps();
     }
 }
+
+

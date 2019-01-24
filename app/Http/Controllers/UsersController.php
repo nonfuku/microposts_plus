@@ -77,4 +77,14 @@ class UsersController extends Controller
         
         return view('users.favorites', $data);
     }
+
+    public function tags($id)
+    {
+        $user = User::find($id);
+        $data = [
+            'user' => $user,
+        ];
+
+        return view('users.tags', $data);
+    }
 }

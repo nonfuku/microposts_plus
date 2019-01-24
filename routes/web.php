@@ -43,5 +43,9 @@ Route::group(['middleware' => ['auth']], function(){
     });
 
     Route::resource('microposts', 'MicropostsController', ['only' => ['store', 'destroy']]);
+
+    //tag
+    Route::get('/tags/{id}/microposts','TagsController@showByTag')->name('tags.microposts');
+    
 });
 
